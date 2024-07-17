@@ -17,7 +17,7 @@ app.use(methodOverride('_method'));
 // view engine
 app.set('view engine','ejs');
 
-const URL = 'mongodb+srv://hesam971:1370abcdAB@test.0ephq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const URL = '';
 const db = mongoose.createConnection(URL);
 let gfs;
 

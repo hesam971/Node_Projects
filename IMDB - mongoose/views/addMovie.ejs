@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title> addMovie </title>
+</head>
+<body class="bg-secondary">
+    
+    <%- include('Navbar.ejs') %>
+
+    <div class="container col-12" style="margin-bottom: 15px;">
+        <div class="row" style="color: wheat;">
+            <div class="col-8" style="margin-top: 25px;">
+                <h5>
+                    <a href="/" style="color: white; text-decoration: none;">
+                        Go Back
+                    </a>
+                </h5>
+                <h1 style="color: white;">
+                    Add Movie
+                </h1>
+                <form class="row g-3" action="/addMovies" method="POST">
+                    <% if(typeof error != 'undefined'){ %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong> <%= error %> </strong>  
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% } %>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Title: </label>
+                        <input type="text" class="form-control" name="title" value="<%=typeof title != 'undefined'? title:''%>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Release Date: </label>
+                        <input type="text" class="form-control" name="releaseDate" value="<%=typeof releaseDate != 'undefined'? releaseDate:''%>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Director: </label>
+                        <input type="text" class="form-control" name="director" value="<%=typeof director != 'undefined'? director:''%>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputState" class="form-label"> Gerne: </label>
+                        <select id="inputState" class="form-select" name="gerne" value="<%=typeof gerne != 'undefined'? gerne:''%>">
+                            <option value="Action"> Action </option>
+                            <option value="Comedy"> Comedy </option>
+                            <option value="Drama"> Drama </option>
+                            <option value="Documentary"> Documentary </option>
+                            <option value="Horror"> Horror </option>
+                            <option value="Thriller"> Thriller </option>
+                            <option value="Other"> Other </option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label"> Plot: </label>
+                        <textarea class="form-control" style="height: 100px" name="plot" value="<%=typeof plot != 'undefined'? plot:''%>"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label"> Cover URL: </label>
+                        <input type="text" class="form-control" name="coverUrl" value="<%=typeof coverUrl != 'undefined'? coverUrl:''%>">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label"> Youtube Trailer Code: </label>
+                        <input type="text" class="form-control" name="trailerCode" value="<%=typeof trailerCode != 'undefined'? trailerCode:''%>">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-warning"> Submit </button>
+                    </div>
+                </form>
+            </div>
+            <%- include('leftColumn.ejs') %>
+        </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+estefade az Google reCAPTCHA
+
+1) aval az hame be sayte https://www.google.com/recaptcha/admin/create miravim va modele  reCAPTCHA ra entekhab mikonim
+(estefade az res.sendFile(__dirname + '/index.html') avalan gadimi shode saniyan hatman bayad kenar App.js bashavd va garna
+an ra nemikhanad)
+(express,node-fetch,body-parser , const {stringify} = rquire('querystring') bayad khande shavand
+
+2) marhaleye bady app.post ma ast hala bayad aval az hame ba yek if motmaen shavim ke fard recaptch ra neveshte ast va dar 
+ger in surat be an yek json be client bargardanim(albate in json va neveshtehaye dakele an kamelan ekhtiyari ast va in ma hastim ke
+tasmim migirim che dakele an benevisim ta tavasote visegi data ba alert kardan an client an ra bebinad)
+hamchenin ma be secretkey va verifyurl baraye taid captcha kod niyaz darim , leza key ra az site google mikhanim va ba estefade 
+az const query = stringify({secret,response,remoteip}) ra baraye verify kardan mikhanim va sepas const verifyUrl kod ra 
+minevisim ke `https://google.com/recaptcha/api/siteverify?${query}` ast va dar akar const body = fetch(verifyUrl).then(
+res => res.json()) ra anjam midahim(json ra ham be client fech mikonim va ham az an migirim) aval dobare kode body.secccess ra
+check mikonim va dar nahayat an ra ba payame movafagiyat return mikonim
+
+3) hala be samte index.html kod miravim yek form misazim va gable tamam shodan tag </head> ma script maksuse recaptch ra load
+mikonim va dar dakele form gabl az dokmeye button ke submit ast dobare div maksuse recaptch ra ke tavasote site be ma dade 
+shode ast ra minevisim dar zemn bayad site key kod ra niz benevisim
+
+4) hala bayad etelat ra fech koniom ebteda miayim va tamame getElemetbyid.value hara migirim va sepas fetch moikonim va dar
+body:JSON.stringify{name:name,email:email} mikonim va dobare then(res => res.json() ra anjam dade va dar nahayat then 
+ra baraye data => console.log(data) anjam midahim

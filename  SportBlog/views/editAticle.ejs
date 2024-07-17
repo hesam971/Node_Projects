@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title> editArticles </title>
+</head>
+<body>
+    <%- include('Header.ejs') %>
+    
+    <div style="margin-top: 15px;" class="container col-12">
+        <h2>
+            Edit Articles
+        </h2>
+            <% if(result != 'undefined'){ %>
+                <% result.forEach(function(result){ %>
+                <form class="row g-3" action="/updateArticlesDashboard/<%=result._id%>" method="POST">
+                    <% if(typeof error != 'undefined'){ %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong> <%= error %> </strong> 
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% } %>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Title: </label>
+                        <input type="text" name="title" class="form-control" id="inputAddress" value="<%= result.title %>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Subtitle: </label>
+                        <input type="text" name="subtitle" class="form-control" id="inputAddress" value="<%= result.subtitle %>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Catagory: </label>
+                        <select name="catagory" class="form-select" aria-label="Default select example" value="<%= result.catagory %>">
+                            <% if(resu != 'undefined'){ %>
+                                <% resu.forEach(function(resu){ %>
+                                    <option value="<%= resu.title %>"> <%=resu.title %> </option>
+                                <% }) %>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label"> Author: </label>
+                        <input type="text" name="author" class="form-control" id="inputAddress" value="<%= result.author %>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label"> Body: </label>
+                        <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"> <%= result.body %> </textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary"> Save </button>
+                        <a class="btn btn-danger" href="/articlesDashboard"> Back </a>
+                    </div>
+                </form>
+                <% }) %>
+            <% } %>
+    </div>
+    
+    <%- include('Footer.ejs') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

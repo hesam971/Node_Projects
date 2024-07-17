@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title> ContactForm </title>
+</head>
+<body>
+    
+    <%- include('Header.ejs') %>
+
+    <div class="container col-12" style="margin-top: 20px;">
+        <div class="container">
+            <h1 class="row row-cols-3">
+                Contact Us
+            </h1>
+        </div>
+        <form action="/contactForm" method="POST">
+            <%if(typeof error != 'undefined'){ %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> <%= error %> </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+            <%if(typeof msg != 'undefined'){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong> <%= msg %> </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"> Subject: </label>
+                <input type="text" name="subject" class="form-control" value="<%= typeof subject != 'undefined'? subject:''%>">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"> Name: </label>
+                <input type="text" name="name" class="form-control" value="<%= typeof name != 'undefined'? name:''%>">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"> Email address: </label>
+                <input type="email" name="email" class="form-control" value="<%= typeof email != 'undefined'? email:''%>">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"> Message: </label>
+                <textarea class="form-control" name="message" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary"> Send </button>
+            </div>
+        </form>
+    </div>
+
+    <%- include('Footer.ejs') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+</html>

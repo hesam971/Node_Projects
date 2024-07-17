@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const db = mongoose.connect('mongodb+srv://hesam971:1370abcdAB@test.0ephq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').
+const db = mongoose.connect('').
 then(() => {console.log('databse connected')}).
 catch((err) => {throw err;});
 

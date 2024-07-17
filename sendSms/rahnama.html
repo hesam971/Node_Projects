@@ -1,0 +1,36 @@
+marahele sakt yek payam ferestande
+
+1) baraye in kar bayad ebteda dar sayte nexmo sabte nam konim ta betavanim az an ejazeye ersal payam daryaft konim.
+
+2) bayad npm haye morede nazar mesle (nexmo,body-parser,nodemon,socket.io,pug,ejs,init,express) nasb shvand.
+
+3) baraye views kod yek pushe misazim va baraye file haye jquery va javascript kod yek pushe public be surate static dashte
+bashim ke mamulan kod in publich dakelash yek pushe be nam js darad va js yek file be nam main.js darad hala dakele hamin 
+main.js kodeman ebteda tamame getElementById haye morede nazar ra baraye text,number mogirim va sepas yek eventlistner ra
+baraye button ke Element an ra ham gerefteim ejra mikonim va minevisim button.addEvenlistner('on', send,false) false yani
+ma mikahim be surate geyre hamzaman befrestim va baraye send yek function minevisim ke alave bar in ke dara an ma value input
+hara gereftim dar an yek fatch minevisim dar in fetch ma be surate dasti method , headers va body ra moshakas mokonim va
+hamchenin gabl az fect ma value haye number va text kod ra migirim va chon fetch halate promis darad baraye an yek then va
+catch minevisim va sepas be safheye app.js miravim va baraye an yek app.post tarif mikonim
+
+4) hala be safheye App.js bar migardim va nexmo ra tarif mikonim be surate new Nexmo va dakele an api haye kodeman ra 
+midahim
+
+5) hala be app.post kodeman miravim va {text,number}=req.body ra neveshte va sepas nexmo.message.sendSms ra minevisim ke
+in sendSms magadire ziyadi migirad ke virtual number ,text.number,{type:'unicode'},(err,responseData) hastand
+
+6) hala be enteha miravim va mikahim az socket.io estefade konim ba estefade az const io aval az hame server kod ra be an
+pas midahim ta betavanim beyne express va socket.io ertebad bargarar konim hala bayad az method on ke dar io ast estefade 
+konim va az connection va disconnection estefade mikonim
+
+7) be kenare console.log(responseData) miravim va anja const data ra minevisim va {id:responseData.messages[0]['id-message']
+va number:responseData.messages[0]['to'] ra minevisim va io.emit("smsStatus",data) ra minevisim va hala be main.js 
+miravim ta edame ra anja tanzim konim 
+
+8)dar nahayat be main.js miravim va zir event kod ebteda const socket=io() ra mikanim va sepas socket.on neveshte va
+az an 'smsStatus' va function (data) ra minevisim va dar an class p kod ra ba innehtml kod mosavi matn garar midahim
+va hala mitavanim payam ersal konim(shomare bayad be surate 491783714764 neveshte shavad)
+
+9) zaman estefade az router bayad nexmo va socket.io dar router upload shavand hamchenin bayad const io = socketio() ra
+benevisim ta betavanim az vishegiye io.emit estefade konim hamchenin bayad moshakasat kamel nexmo niz dar anja ezafe shavad
+mesle apikey . dar file contact niz bayad /socket.io/socket.io va js/main.js niz ezafe shavand
